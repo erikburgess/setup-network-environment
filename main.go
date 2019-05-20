@@ -35,6 +35,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer tempFile.Close()
+
 	if err := writeEnvironment(tempFile); err != nil {
 		log.Fatal(err)
 	}
@@ -45,6 +46,9 @@ func main() {
 	if fileError != nil {
 		log.Printf("Failed to open dst file %v", fileError)
 	}
+
+	// reset the file
+	tempFile.Seek(0, 0)
 
 	written, anError := io.Copy(dstfile, tempFile)
 
