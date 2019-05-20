@@ -38,7 +38,7 @@ func main() {
 	if err := writeEnvironment(tempFile); err != nil {
 		log.Fatal(err)
 	}
-	dstfile, fileError := os.Open(environmentFilePath)
+	dstfile, fileError := os.Create(environmentFilePath)
 
 	log.Printf("My build")
 
