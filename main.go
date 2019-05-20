@@ -40,6 +40,8 @@ func main() {
 	}
 	dstfile, fileError := os.Open(environmentFilePath)
 
+	log.Printf("My build")
+
 	if fileError != nil {
 		log.Printf("Failed to open dst file %v", fileError)
 	}
