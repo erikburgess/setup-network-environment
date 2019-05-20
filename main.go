@@ -38,7 +38,9 @@ func main() {
 	if err := writeEnvironment(tempFile); err != nil {
 		log.Fatal(err)
 	}
-	os.Rename(tempFilePath, environmentFilePath)
+	dstfile, fileError := os.Open(environmentFilePath)
+
+	io.Copy(dstfile, tempFile)
 }
 
 func writeEnvironment(w io.Writer) error {
