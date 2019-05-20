@@ -46,7 +46,14 @@ func main() {
 		log.Printf("Failed to open dst file %v", fileError)
 	}
 
-	io.Copy(dstfile, tempFile)
+	written, anError := io.Copy(dstfile, tempFile)
+
+	log.Printf("Written %v", written)
+
+	if anError != nil {
+		log.Printf("Copy error %v", anError)
+	}
+
 }
 
 func writeEnvironment(w io.Writer) error {
