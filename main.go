@@ -40,6 +40,10 @@ func main() {
 	}
 	dstfile, fileError := os.Open(environmentFilePath)
 
+	if fileError != nil {
+		log.Printf("Failed to open dst file %v", fileError)
+	}
+
 	io.Copy(dstfile, tempFile)
 }
 
